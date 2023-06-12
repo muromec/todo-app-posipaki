@@ -1,0 +1,22 @@
+.TodoContainer {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+}
+
+.TodoContainer h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+.TodoContainer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.TodoContainer ul li {
+  font-size: 1.5rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
