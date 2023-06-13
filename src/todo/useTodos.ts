@@ -1,4 +1,4 @@
-import { useResource } from 'react-pspki';
+import { useResource } from 'react-posipaki';
 
 import { TodoItem, TodoItems } from './types';
 const NO_ITEMS: TodoItems = [];

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Registry } from 'react-pspki';
+import { Registry } from 'react-posipaki';
 import {
   createBrowserRouter,
   RouterProvider,

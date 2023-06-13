@@ -7158,6 +7158,16 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
+posipaki@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/posipaki/-/posipaki-0.3.2.tgz#badc375ef9483bffdcbb3e21f8504bcf67c181f4"
+  integrity sha512-CO4jipQlN5mKglx+mL24FD/mbTfHhPlNTqmxxxbLqjP6Y7AX4cONxwnGLtijZ4m8wnTF55HQC7/9ibVikDkGfQ==
+
+posipaki@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/posipaki/-/posipaki-0.3.3.tgz#f1464ccf14200b3a13447a6eff213ca6a45c8c86"
+  integrity sha512-8cHclrSmduUXBSbx1o1Q4vINhSAGd+5Y9Ir4mRVBrwxj09tbH1VLgsf0MhG2+Rro5tS+wWSa30tNvi7GJMa0UA==
+
 postcss-attribute-case-insensitive@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-5.0.2.tgz#03d761b24afc04c09e757e92ff53716ae8ea2741"
@@ -7803,10 +7813,6 @@ psl@^1.1.33:
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.9.0.tgz#d0df2a137f00794565fcaf3b2c00cd09f8d5a5a7"
   integrity sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==
 
-"pspki@https://github.com/muromec/posipaki#v0.3.1":
-  version "0.3.1"
-  resolved "https://github.com/muromec/posipaki#047a1148c0f6b2d0bf3e8377c2d7c2bda34c7c07"
-
 punycode@^2.1.0, punycode@^2.1.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
@@ -7933,11 +7939,13 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-"react-pspki@https://github.com/muromec/react-posipaki#v0.1.0":
-  version "0.1.0"
-  resolved "https://github.com/muromec/react-posipaki#7157fa6b325c5ebf922270b1ac564207d87b5710"
+react-posipaki@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-posipaki/-/react-posipaki-0.2.3.tgz#bbcf211c27519386871b6c99c85a909cdf7bbe6d"
+  integrity sha512-d5TnDCFtkWiBlBO9jzbuaS78XJguNT8FsmtebmfTPlwxpOHKIPP1svr/5wrQzgKqtxx1Qp+v2PdkzWEg98gR0Q==
   dependencies:
     "@types/react" "^18.0.0"
+    posipaki "^0.3.2"
     react "^18.2.0"
 
 react-refresh@^0.11.0:
