@@ -1,16 +1,25 @@
 import React from 'react';
+import { useParams } from "react-router-dom";
 
+import TodoName from './todo/TodoName';
 import './App.css';
-import TodoList from './todo/TodoList';
 
-function App() {
+type Props = {
+  children?: React.ReactNode,
+};
+
+function App({ children }: Props) {
+  const { id } = useParams() as { id: string };
   return (
     <div className="App">
       <header className="App-header">
-        Todo List
+        {id
+          ? <TodoName id={id} />
+          : <span>Todo List</span>
+        }
       </header>
 
-      <TodoList />
+      { children }
     </div>
   );
 }

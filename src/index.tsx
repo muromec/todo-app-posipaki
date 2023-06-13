@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Registry } from 'react-pspki';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 import './index.css';
 import App from './App';
+import TodoList from './todo/TodoList';
+import TodoDetails from './todo/TodoDetails';
+
 import reportWebVitals from './reportWebVitals';
-import { worker } from './mocks/browser';
-import { Registry } from 'react-pspki';
 
 if (process.env.NODE_ENV === 'development') {
 
@@ -13,12 +20,26 @@ if (process.env.NODE_ENV === 'development') {
   worker.start({quiet: true});
 
 }
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App><TodoList /></App>,
+  },
+  {
+    path: "/todo/:id",
+    element: <App><TodoDetails /></App>,
+  },
+]);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const registry = {};
 root.render(
-  <Registry value={{}}>
-    <App />
+  <Registry value={registry}>
+    <RouterProvider router={router} />
   </Registry>
 );
 
