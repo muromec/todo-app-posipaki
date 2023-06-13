@@ -7798,9 +7798,9 @@ psl@^1.1.33:
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.9.0.tgz#d0df2a137f00794565fcaf3b2c00cd09f8d5a5a7"
   integrity sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==
 
-"pspki@https://github.com/muromec/pspki":
-  version "0.1.0"
-  resolved "https://github.com/muromec/pspki#39010ec00cbcf5b6da76a8e27088d269bd02c5cd"
+"pspki@https://github.com/muromec/pspki#v0.1.2":
+  version "0.1.2"
+  resolved "https://github.com/muromec/pspki#910bc464dcbd349c4c46319547e1768491fc6551"
 
 punycode@^2.1.0, punycode@^2.1.1:
   version "2.3.0"
