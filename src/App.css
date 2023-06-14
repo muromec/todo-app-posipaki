@@ -18,3 +18,11 @@
 .App-link {
   color: #61dafb;
 }
+
+.App footer {
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+.App footer a {
+  text-decoration: none;
+}

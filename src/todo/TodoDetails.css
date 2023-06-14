@@ -1,0 +1,13 @@
+.TodoDetails {
+  padding: 1.5rem;
+}
+
+.TodoDetails form {
+  display: flex;
+  flex-direction: column;
+}
+
+.TodoDetails form > button {
+  max-width: 150px;
+}
+

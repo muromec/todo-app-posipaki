@@ -31,6 +31,10 @@ const router = createBrowserRouter([
     path: "/todo/:id",
     element: <App><TodoDetails /></App>,
   },
+  {
+    path: "/about",
+    element: <App />
+  },
 ]);
 
 const root = ReactDOM.createRoot(
@@ -47,3 +51,9 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+type DebugWindow = {
+  [id: string]: unknown,
+}
+
+(globalThis as DebugWindow)._preg = registry;

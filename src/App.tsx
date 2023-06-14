@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import TodoName from './todo/TodoName';
 import './App.css';
@@ -20,6 +20,10 @@ function App({ children }: Props) {
       </header>
 
       { children }
+
+      <footer>
+        <Link to="/about">About</Link>
+      </footer>
     </div>
   );
 }
