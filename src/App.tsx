@@ -22,6 +22,7 @@ function App({ children }: Props) {
       { children }
 
       <footer>
+        <Link to="/">List</Link>
         <Link to="/about">About</Link>
       </footer>
     </div>

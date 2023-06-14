@@ -20,9 +20,14 @@
 }
 
 .App footer {
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+  padding-top: 0.5rem;
   font-size: 1rem;
+  border-top: solid rgba(1, 1, 1, 0.3) 1px;
 }
 .App footer a {
   text-decoration: none;
+  margin: 0.25rem 0;
 }

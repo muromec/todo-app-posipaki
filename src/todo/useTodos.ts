@@ -21,34 +21,41 @@ function useCachedDetails(id: string)  : TodoItem | null {
 }
 
 type R<D> = {
-  remote: Process<FetchArgs<D>, FetchState<D>, FetchMessage<D>, FetchMessage<D>>,
+  remote: Process<FetchArgs<D>, FetchState<D>, FetchMessage<D>, FetchMessage<D>> | null,
   data: D | null,
+  isLoading: boolean,
 };
 
 type RMessage<DataType> =
+  FetchMessage<DataType> |
   { type: 'STOP' } |
-  { type: 'EXIT', pid: Symbol } |
-  { type: 'OK', data: DataType } |
   { type: 'PATCH', id: string, data: Partial<DataType>};
 
-function* resource<D>(ctx: ProcessCtx<FetchMessage<D> | RMessage<D>, FetchMessage<D>>, { url } : { url: URL }) : Generator<R<D> | null, void, RMessage<D>> {
+function* resource<D>(ctx: ProcessCtx<RMessage<D>, FetchMessage<D>>, { url, lazy } : { url: URL, lazy: boolean }) : Generator<R<D> | null, void, RMessage<D>> {
   const state: R<D> = {
-    remote: ctx.fork<FetchArgs<D>, FetchState<D>, FetchMessage<D>, FetchMessage<D>>(xfetch, `${ctx.pname}:fetch`)({ url }),
+    remote: null,
     data: null,
+    isLoading: false,
   };
+  if (!lazy) {
+    state.remote = ctx.fork(xfetch<D>, `${ctx.pname}:fetch`)({ url });
+    state.isLoading = true;
+  }
   yield state;
 
   while(state) {
-    const msg = (yield null) as RMessage<D>;
+    const msg = (yield null);
+    console.log('m', msg);
     if (msg.type === 'OK' && msg.data) {
       state.data = msg.data;
-      ctx.toParent(msg);
     }
     if (msg.type === 'EXIT' && state.remote?.id === msg.pid) {
+      state.remote = null;
+      state.isLoading = false;
     }
     if (msg.type === 'PATCH' && msg.data) {
       state.data = ({...state.data, ...msg.data}) as D;
-      state.remote = ctx.fork<FetchArgs<D>, FetchState<D>, FetchMessage<D>, FetchMessage<D>>(xfetch, `${ctx.pname}:fetch`)({ url, method: 'PUT', body: state.data });
+      state.remote = ctx.fork(xfetch<D>, `${ctx.pname}:fetch`)({ url, method: 'PUT', body: state.data });
     }
     if (msg.type === 'STOP') {
       break;
@@ -59,9 +66,9 @@ function* resource<D>(ctx: ProcessCtx<FetchMessage<D> | RMessage<D>, FetchMessag
 export function useTodoDetails(id: string): { isLoading: boolean, details: TodoItem | null, patch: (arg: Partial<TodoItem>) => void} {
   const cachedDetails = useCachedDetails(id);
   const url = new URL(`/api/todo/${id}/`, document.location.origin);
-  const { pstate: rstate, send } = useProcess(resource<TodoItem>, `todos:${id}`, {url});
+  const { pstate: rstate, send } = useProcess(resource<TodoItem>, `todos:${id}`, {url, lazy: Boolean(cachedDetails)});
   const details: TodoItem | null = rstate?.data || null;
-  const isLoading = false;
+  const isLoading = rstate?.isLoading || false;
 
   function patch(data: Partial<TodoItem>) {
     if (send) {
